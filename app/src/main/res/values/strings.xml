@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Evently</string>
+    <string name="dashboard_title">Dashboard</string>
+    <string name="dashboard_heading">Find amazing events near you</string>
+    <string name="dashboard_sub_title">480 events in your area</string>
+    <string name="search_bar_hint">Search....</string>
+    <string name="dummy_text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in nisi ut orci porta bibendum. Nullam eget vehicula ex. Maecenas quis lacinia lectus. Praesent fringilla leo eu elit hendrerit, vel ullamcorper massa vehicula. Sed vitae enim a justo consequat luctus. Nullam ultricies lectus id ex ultrices, nec volutpat neque volutpat. Sed in bibendum ex. Maecenas vitae mauris quis purus eleifend rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Vivamus quis nisi nec quam convallis cursus. Curabitur ac lorem nec est viverra scelerisque. Sed non placerat dolor. Nulla facilisi.</string>
+    <string name="location">KITE MALL</string>
+    <string name="desc">Sunburn festival is Kajiados biggest music fest and this December ana this time its back to its homeland - Kitengela - with a major comeback for 3 days full of fun. Meet many OF your favorite stars such as Dimitri, Mike and many more. All are welcome </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="favourite">Favourite</string>
+    <string name="user_profile">User Profile</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
+</resources>
