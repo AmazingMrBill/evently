@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Evently"
         tools:targetApi="31">
         <activity
+            android:name=".EventManager.EventManager"
+            android:exported="false" />
+        <activity
             android:name=".Event_card"
             android:exported="false" />
         <activity

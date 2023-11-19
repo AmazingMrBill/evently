@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/event_manager"
+    app:startDestination="@id/create_Event">
+
+    <fragment
+        android:id="@+id/manage_Events"
+        android:name="com.example.evently.EventManager.Manage_Events"
+        android:label="fragment_manage__events"
+        tools:layout="@layout/fragment_manage__events" >
+        <action
+            android:id="@+id/action_manage_Events_to_create_Event"
+            app:destination="@id/create_Event" />
+        <action
+            android:id="@+id/action_manage_Events_to_event_Analytics"
+            app:destination="@id/event_Analytics" />
+    </fragment>
+    <fragment
+        android:id="@+id/create_Event"
+        android:name="com.example.evently.EventManager.Create_Event"
+        android:label="fragment_create__event"
+        tools:layout="@layout/fragment_create__event" >
+        <action
+            android:id="@+id/action_create_Event_to_event_Analytics"
+            app:destination="@id/event_Analytics" />
+        <action
+            android:id="@+id/action_create_Event_to_manage_Events"
+            app:destination="@id/manage_Events" />
+    </fragment>
+    <fragment
+        android:id="@+id/event_Analytics"
+        android:name="com.example.evently.EventManager.Event_Analytics"
+        android:label="fragment_event__analytics"
+        tools:layout="@layout/fragment_event__analytics" >
+        <action
+            android:id="@+id/action_event_Analytics_to_create_Event"
+            app:destination="@id/create_Event" />
+        <action
+            android:id="@+id/action_event_Analytics_to_manage_Events"
+            app:destination="@id/manage_Events" />
+    </fragment>
+</navigation>

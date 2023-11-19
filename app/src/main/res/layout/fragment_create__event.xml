@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/hintCcolor"
+    android:padding="16dp">
+
+    <!-- Event Images -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="370dp"
+        app:cardCornerRadius="30dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80A2B7FF"
+            android:paddingBottom="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/eventImageView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image_placeholder"
+                android:contentDescription="event_image"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/btnChooseImage"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="#5B6A9C"
+                android:text="Choose Image"
+                app:cornerRadius="30dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="16dp"
+        android:layout_width="370dp"
+        app:cardCornerRadius="30dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:padding="16dp"
+            android:background="#80A2B7FF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- Event Name -->
+            <EditText
+                android:id="@+id/editTextEventName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Name" />
+
+            <!-- Event Date -->
+            <EditText
+                android:id="@+id/editTextEventDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Date"
+                android:inputType="date" />
+
+            <!-- Event Time -->
+            <EditText
+                android:id="@+id/editTextEventTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Time"
+                android:inputType="time" />
+
+            <!-- Event Location -->
+            <EditText
+                android:id="@+id/editTextEventLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Location" />
+
+            <!-- Event Description -->
+            <EditText
+                android:id="@+id/editTextEventDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Description"
+                android:inputType="textMultiLine"
+                android:gravity="top" />
+
+            <!-- Event Price -->
+            <EditText
+                android:id="@+id/editTextEventPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Price"
+                android:inputType="numberDecimal" />
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <!-- Save Button -->
+    <Button
+        android:layout_marginTop="16dp"
+        android:id="@+id/btnSaveEvent"
+        android:layout_width="340dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF5B6A9C"
+        android:text="Save Event"
+        app:cornerRadius="30dp" />
+
+</LinearLayout>

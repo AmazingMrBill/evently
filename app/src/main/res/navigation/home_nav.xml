@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav"
+    app:startDestination="@id/view_event">
+
+    <fragment
+        android:id="@+id/view_event"
+        android:name="com.example.evently.Home.view_event"
+        android:label="fragment_view_event"
+        tools:layout="@layout/fragment_view_event" />
+    <fragment
+        android:id="@+id/view_ticket"
+        android:name="com.example.evently.Home.view_ticket"
+        android:label="fragment_view_ticket"
+        tools:layout="@layout/fragment_view_ticket" />
+    <fragment
+        android:id="@+id/purchase_ticket"
+        android:name="com.example.evently.Home.purchase_ticket"
+        android:label="fragment_purchase_ticket"
+        tools:layout="@layout/fragment_purchase_ticket" />
+</navigation>

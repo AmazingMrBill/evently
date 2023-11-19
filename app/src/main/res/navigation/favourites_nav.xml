@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/favourites_nav"
+    app:startDestination="@id/favourite">
+
+    <fragment
+        android:id="@+id/no_favourite"
+        android:name="com.example.evently.Favourite.no_favourite"
+        android:label="fragment_no_favourite"
+        tools:layout="@layout/fragment_no_favourite" />
+    <fragment
+        android:id="@+id/favourite"
+        android:name="com.example.evently.Favourite.favourite"
+        android:label="fragment_favourite"
+        tools:layout="@layout/fragment_favourite" />
+</navigation>

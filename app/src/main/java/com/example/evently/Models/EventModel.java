@@ -1,15 +1,20 @@
 package com.example.evently.Models;
 
 public class EventModel {
-    private String day, month, title, place, count, url;
-    public EventModel(String day, String month, String title,String place,String count, String url)
+    private String day;
+    private String month;
+    private String title;
+    private String place;
+    private String count;
+    private int image;
+    public EventModel(String day, String month, String title,String place,String count, int image)
     {
         this.day=day;
         this.month=month;
         this.title=title;
         this.place=place;
         this.count=count;
-        this.url=url;
+        this.image=image;
 
     }
 
@@ -33,7 +38,5 @@ public class EventModel {
     {
         return count;
     }
-    public String getUrl() {
-        return url;
-    }
+    public int getImage() { return image;}
 }

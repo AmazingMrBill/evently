@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class EventsRecyclerViewAdapter extends RecyclerView.Adapter<EventsRecyclerViewAdapter.ViewHolder>{
     ArrayList<EventModel> eventModelArrayList= new ArrayList<>();
-   public EventsRecyclerViewAdapter(ArrayList<EventModel> EventModelArrayList){
+   public EventsRecyclerViewAdapter(ArrayList<EventModel> eventModelArrayList){
        this.eventModelArrayList=eventModelArrayList;
    }
     @NonNull
@@ -27,6 +27,7 @@ public class EventsRecyclerViewAdapter extends RecyclerView.Adapter<EventsRecycl
         return new ViewHolder(cardView);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.date.setText(eventModelArrayList.get(position).getDay());
@@ -34,7 +35,7 @@ public class EventsRecyclerViewAdapter extends RecyclerView.Adapter<EventsRecycl
         holder.title.setText(eventModelArrayList.get(position).getTitle());
         holder.place.setText(eventModelArrayList.get(position).getPlace());
         holder.count.setText(eventModelArrayList.get(position).getCount());
-        Glide.with(holder.imageView).load(eventModelArrayList.get(position).getUrl()).into(holder.imageView);
+        Glide.with(holder.imageView).load(eventModelArrayList.get(position).getImage()).into(holder.imageView);
 
     }
 
