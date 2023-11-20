@@ -254,13 +254,14 @@
         app:layout_constraintLeft_toRightOf="parent"
         android:gravity="center|start"
         android:weightSum="10">
-<ImageView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/round_cancle_btn"
-    android:elevation="30dp">
 
-</ImageView>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="30dp"
+            android:src="@drawable/round_cancle_btn">
+
+        </ImageView>
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"

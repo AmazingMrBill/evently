@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/hintCcolor"
+    android:background="@color/white"
     android:padding="16dp">
 
     <!-- Event Images -->
     <androidx.cardview.widget.CardView
+        android:layout_marginTop="30dp"
         android:layout_width="370dp"
         app:cardCornerRadius="30dp"
         android:layout_height="wrap_content">

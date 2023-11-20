@@ -14,22 +14,23 @@ import com.example.evently.Adapters.EventsRecyclerViewAdapter;
 import com.example.evently.R;
 import com.example.evently.Repository.EventsRepo;
 
-public class Home extends Fragment {
+public class Main_pageList extends Fragment {
 
     RecyclerView recyclerView;
     EventsRecyclerViewAdapter eventsRecyclerViewAdapter;
-    public Home() {
+    public Main_pageList() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_main_page_list, container, false);
 
-        // recyclerView = view.findViewById(R.id.recyclerView);
-        // initRecyclerView();
+        recyclerView = view.findViewById(R.id.recyclerView);
+        initRecyclerView();
 
         return view;
     }

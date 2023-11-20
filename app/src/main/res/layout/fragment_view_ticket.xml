@@ -1,14 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home.view_ticket">
+    android:background="@color/lightGray"
+    android:id="@+id/buyTicketsPage"
+    tools:context=".tickets.Tickets">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <!-- Ticket Options CardView -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ticketOptionsCard"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Regular Tickets -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Regular Tickets"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp">
+                </TextView>
+
+                <!-- Early Bird Ticket -->
+                <include
+                    layout="@layout/ticket_option_item"
+                    android:id="@+id/earlyBirdTicket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:ticketTitle="Early Bird"
+                    app:ticketPrice="$20.00">
+                </include>
+
+                <!-- Second Release Ticket -->
+                <include
+                    layout="@layout/ticket_option_item"
+                    android:id="@+id/secondReleaseTicket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:ticketTitle="Second Release"
+                    app:ticketPrice="$25.00">
+                </include>
+
+                <!-- Late Comers Ticket -->
+                <include layout="@layout/ticket_option_item"
+                    android:id="@+id/lateComersTicket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:ticketTitle="Late Comers"
+                    app:ticketPrice="$30.00">
+                </include>
+
+                <!-- VIP Tickets -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="VIP Tickets"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp">
+                </TextView>
+
+                <!-- VIP Ticket -->
+                <include layout="@layout/ticket_option_item"
+                    android:id="@+id/vipTicket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:ticketTitle="VIP Ticket"
+                    app:ticketPrice="$50.00">
+                </include>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Purchase Button -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintHeight_percent=".1"
+            app:layout_constraintWidth_percent=".9"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/ticketOptionsCard"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="parent"
+            android:gravity="center|start"
+            android:weightSum="10">
+
+            <!-- Cancel Button -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/round_cancle_btn"
+                android:elevation="30dp">
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+            </LinearLayout>
+
+            <!-- Purchase Button -->
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:layout_weight="9"
+                android:backgroundTint="@color/greenBtnColor"
+                app:cornerRadius="20dp"
+                android:elevation="10dp"
+                android:text="BUY TICKETS"
+                android:textColor="@color/white">
+            </com.google.android.material.button.MaterialButton>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

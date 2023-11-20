@@ -3,20 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_manager"
-    app:startDestination="@id/create_Event">
+    app:startDestination="@id/user_profile_page">
 
-    <fragment
-        android:id="@+id/manage_Events"
-        android:name="com.example.evently.EventManager.Manage_Events"
-        android:label="fragment_manage__events"
-        tools:layout="@layout/fragment_manage__events" >
-        <action
-            android:id="@+id/action_manage_Events_to_create_Event"
-            app:destination="@id/create_Event" />
-        <action
-            android:id="@+id/action_manage_Events_to_event_Analytics"
-            app:destination="@id/event_Analytics" />
-    </fragment>
     <fragment
         android:id="@+id/create_Event"
         android:name="com.example.evently.EventManager.Create_Event"
@@ -27,7 +15,13 @@
             app:destination="@id/event_Analytics" />
         <action
             android:id="@+id/action_create_Event_to_manage_Events"
-            app:destination="@id/manage_Events" />
+            app:destination="@id/navigation" />
+        <action
+            android:id="@+id/action_create_Event_to_manage_create_event_page"
+            app:destination="@id/manage_create_event_page" />
+        <action
+            android:id="@+id/action_create_Event_to_user_profile_page"
+            app:destination="@id/user_profile_page" />
     </fragment>
     <fragment
         android:id="@+id/event_Analytics"
@@ -39,6 +33,93 @@
             app:destination="@id/create_Event" />
         <action
             android:id="@+id/action_event_Analytics_to_manage_Events"
-            app:destination="@id/manage_Events" />
+            app:destination="@id/navigation" />
+        <action
+            android:id="@+id/action_event_Analytics_to_manage_create_event_page"
+            app:destination="@id/manage_create_event_page" />
+        <action
+            android:id="@+id/action_event_Analytics_to_user_profile_page"
+            app:destination="@id/user_profile_page" />
+    </fragment>
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/manage_Events">
+        <fragment
+            android:id="@+id/manage_Events"
+            android:name="com.example.evently.EventManager.Manage_Events"
+            android:label="fragment_manage__events"
+            tools:layout="@layout/fragment_manage__events">
+            <action
+                android:id="@+id/action_manage_Events_to_create_Event"
+                app:destination="@id/create_Event" />
+            <action
+                android:id="@+id/action_manage_Events_to_event_Analytics"
+                app:destination="@id/event_Analytics" />
+            <action
+                android:id="@+id/action_manage_Events_to_ongoing_events"
+                app:destination="@id/ongoing_events" />
+            <action
+                android:id="@+id/action_manage_Events_to_recent_events"
+                app:destination="@id/recent_events" />
+        </fragment>
+        <fragment
+            android:id="@+id/ongoing_events"
+            android:name="com.example.evently.ongoing_events"
+            android:label="fragment_ongoing_events"
+            tools:layout="@layout/fragment_ongoing_events" >
+            <action
+                android:id="@+id/action_ongoing_events_to_manage_Events"
+                app:destination="@id/manage_Events" />
+        </fragment>
+        <fragment
+            android:id="@+id/recent_events"
+            android:name="com.example.evently.recent_events"
+            android:label="fragment_recent_events"
+            tools:layout="@layout/fragment_recent_events" >
+            <action
+                android:id="@+id/action_recent_events_to_manage_Events"
+                app:destination="@id/manage_Events" />
+        </fragment>
+        <action
+            android:id="@+id/action_global_manage_create_event_page"
+            app:destination="@id/manage_create_event_page" />
+        <action
+            android:id="@+id/action_global_user_profile_page"
+            app:destination="@id/user_profile_page" />
+    </navigation>
+    <fragment
+        android:id="@+id/manage_create_event_page"
+        android:name="com.example.evently.EventManager.manage_create_event_page"
+        android:label="fragment_manage_create_event_page"
+        tools:layout="@layout/fragment_manage_create_event_page" >
+        <action
+            android:id="@+id/action_manage_create_event_page_to_create_Event"
+            app:destination="@id/create_Event" />
+        <action
+            android:id="@+id/action_manage_create_event_page_to_event_Analytics"
+            app:destination="@id/event_Analytics" />
+        <action
+            android:id="@+id/action_manage_create_event_page_to_navigation"
+            app:destination="@id/navigation" />
+        <action
+            android:id="@+id/action_manage_create_event_page_to_user_profile_page"
+            app:destination="@id/user_profile_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/user_profile_page"
+        android:name="com.example.evently.user_profile_page"
+        android:label="fragment_user_profile_page"
+        tools:layout="@layout/fragment_user_profile_page" >
+        <action
+            android:id="@+id/action_user_profile_page_to_manage_create_event_page"
+            app:destination="@id/manage_create_event_page" />
+        <action
+            android:id="@+id/action_user_profile_page_to_create_Event"
+            app:destination="@id/create_Event" />
+        <action
+            android:id="@+id/action_user_profile_page_to_event_Analytics"
+            app:destination="@id/event_Analytics" />
+        <action
+            android:id="@+id/action_user_profile_page_to_navigation"
+            app:destination="@id/navigation" />
     </fragment>
 </navigation>

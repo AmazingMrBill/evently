@@ -3,21 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_nav"
-    app:startDestination="@id/view_event">
+    app:startDestination="@id/main_pageList">
 
     <fragment
         android:id="@+id/view_event"
         android:name="com.example.evently.Home.view_event"
         android:label="fragment_view_event"
-        tools:layout="@layout/fragment_view_event" />
+        tools:layout="@layout/fragment_view_event" >
+        <action
+            android:id="@+id/action_view_event_to_view_ticket"
+            app:destination="@id/view_ticket" />
+        <action
+            android:id="@+id/action_view_event_to_main_pageList"
+            app:destination="@id/main_pageList" />
+    </fragment>
     <fragment
         android:id="@+id/view_ticket"
         android:name="com.example.evently.Home.view_ticket"
         android:label="fragment_view_ticket"
-        tools:layout="@layout/fragment_view_ticket" />
+        tools:layout="@layout/fragment_view_ticket" >
+        <action
+            android:id="@+id/action_view_ticket_to_purchase_ticket"
+            app:destination="@id/purchase_ticket" />
+        <action
+            android:id="@+id/action_view_ticket_to_view_event"
+            app:destination="@id/view_event" />
+    </fragment>
     <fragment
         android:id="@+id/purchase_ticket"
         android:name="com.example.evently.Home.purchase_ticket"
         android:label="fragment_purchase_ticket"
-        tools:layout="@layout/fragment_purchase_ticket" />
+        tools:layout="@layout/fragment_purchase_ticket" >
+        <action
+            android:id="@+id/action_purchase_ticket_to_view_ticket"
+            app:destination="@id/view_ticket" />
+    </fragment>
+    <fragment
+        android:id="@+id/main_pageList"
+        android:name="com.example.evently.Home.Main_pageList"
+        android:label="fragment_main_page_list"
+        tools:layout="@layout/fragment_main_page_list" >
+        <action
+            android:id="@+id/action_main_pageList_to_view_event"
+            app:destination="@id/view_event" />
+    </fragment>
 </navigation>

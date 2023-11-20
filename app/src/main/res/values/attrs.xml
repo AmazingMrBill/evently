@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<declare-styleable name="TicketOptionItem">
+    <attr name="ticketTitle" format="string"/>
+    <attr name="ticketPrice" format="string"/>
+</declare-styleable>
+</resources>
