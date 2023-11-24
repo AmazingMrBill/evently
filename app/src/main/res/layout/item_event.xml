@@ -1,18 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/eventNameTextView"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="EVENT SAMPLE"
-        android:textStyle="bold"/>
+        android:layout_margin="5dp"
+        app:cardCornerRadius="30dp">
 
-    <!-- Add other views for displaying event details -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:background="@color/hintCcolor"
+            android:padding="16dp"
+            tools:ignore="MissingConstraints">
 
-</LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/image3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:elevation="2dp"
+                app:cardCornerRadius="15dp">
+                <!-- Add the views for each event item here, based on your model class ModelClass -->
+                <ImageView
+                    android:id="@+id/eventImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/partyj" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/event_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@id/image3"
+                android:text="Thur,"
+                android:textSize="15sp" />
+,
+            <TextView
+                android:id="@+id/eventDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@id/event_day"
+                android:text="Dec 22"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/eventTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@id/eventDate"
+                android:text="· 6:00 Pm"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/eventName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/eventDate"
+                android:layout_marginStart="15dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"
+                android:layout_toEndOf="@id/image3"
+                android:text="Wednesday Codding Nights"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/event_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/eventName"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/image3"
+                android:drawableLeft="@drawable/map2"
+                android:drawablePadding="5dp"
+                android:drawableTint="#5865AC"
+                android:text= "Umma University"
+                android:textSize="15sp"/>
+
+            <!-- Add other views for event details here -->
+            <!-- ... -->
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

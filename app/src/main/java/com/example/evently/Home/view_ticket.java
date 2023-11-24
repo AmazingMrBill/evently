@@ -1,66 +1,69 @@
 package com.example.evently.Home;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.evently.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link view_ticket#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class view_ticket extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public view_ticket() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment view_ticket.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static view_ticket newInstance(String param1, String param2) {
-        view_ticket fragment = new view_ticket();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_ticket, container, false);
+        View view = inflater.inflate(R.layout.fragment_view_ticket, container, false);
+
+        Button btnPurchaseTicket = view.findViewById(R.id.btnpurchase);
+        ImageView backToEvent = view.findViewById(R.id.backToEvent);
+
+        btnPurchaseTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.purchase_ticket);
+            }
+        });
+
+        backToEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to the main_page list fragment
+                Navigation.findNavController(view).navigate(R.id.view_event);
+            }
+        });
+
+        // Ensure you are using the correct IDs for the include tags
+        View earlyBirdTicket = view.findViewById(R.id.earlyBirdTicket);
+        View secondReleaseTicket = view.findViewById(R.id.secondReleaseTicket);
+        View lateComersTicket = view.findViewById(R.id.lateComersTicket);
+        View vipTicket = view.findViewById(R.id.vipTicket);
+
+        // Set data for included layouts
+        setTicketData(earlyBirdTicket, "Early Bird", "$20.00");
+        setTicketData(secondReleaseTicket, "Second Release", "$25.00");
+        setTicketData(lateComersTicket, "Late Comers", "$30.00");
+        setTicketData(vipTicket, "VIP Ticket", "$50.00");
+
+        return view;
+    }
+
+    private void setTicketData(View ticketView, String title, String price) {
+        // Find the TextViews in the included layout
+        TextView ticketTitle = ticketView.findViewById(R.id.ticketTitle);
+        TextView ticketPrice = ticketView.findViewById(R.id.ticketPrice);
+
+        // Set data
+        ticketTitle.setText(title);
+        ticketPrice.setText(price);
     }
 }

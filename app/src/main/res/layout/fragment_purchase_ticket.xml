@@ -110,6 +110,7 @@
 
             <!-- Cancel Button -->
             <ImageView
+                android:id="@+id/backToTickets"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/round_cancle_btn"
@@ -124,6 +125,7 @@
 
             <!-- Purchase Button -->
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/proceedToPayment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="0dp"

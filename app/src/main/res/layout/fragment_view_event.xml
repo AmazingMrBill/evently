@@ -285,6 +285,7 @@
             android:gravity="center|start"
             android:weightSum="10">
             <ImageView
+                android:id="@+id/backToHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/round_cancle_btn"
@@ -298,6 +299,7 @@
 
             </LinearLayout>
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/joinBtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="0dp"

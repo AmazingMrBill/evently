@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,12 +8,18 @@
     android:background="@color/hintCcolor"
     android:padding="16dp">
 
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <!-- Search Bar -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:queryHint="Search Events"
+        android:background="@drawable/searchbg"
         android:iconifiedByDefault="false"
         android:layout_marginBottom="16dp"/>
 
@@ -24,55 +31,55 @@
         android:scrollbars="none">
 
 
-<androidx.cardview.widget.CardView
-    app:cardCornerRadius="5dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:padding="5dp"
-        android:background="#80A2B7FF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:padding="5dp"
+                android:background="#80A2B7FF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="filters"
-            android:layout_marginEnd="8dp"
-            style="?android:attr/buttonBarButtonStyle" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="filters"
+                    android:layout_marginEnd="8dp"
+                    style="?android:attr/buttonBarButtonStyle" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="music"
-            android:layout_marginEnd="8dp"
-            style="?android:attr/buttonBarButtonStyle" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="music"
+                    android:layout_marginEnd="8dp"
+                    style="?android:attr/buttonBarButtonStyle" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tech"
-            android:layout_marginEnd="8dp"
-            style="?android:attr/buttonBarButtonStyle" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tech"
+                    android:layout_marginEnd="8dp"
+                    style="?android:attr/buttonBarButtonStyle" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Business"
-            android:layout_marginEnd="8dp"
-            style="?android:attr/buttonBarButtonStyle" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Business"
+                    android:layout_marginEnd="8dp"
+                    style="?android:attr/buttonBarButtonStyle" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Food and drink"
-            style="?android:attr/buttonBarButtonStyle" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Food and drink"
+                    style="?android:attr/buttonBarButtonStyle" />
 
-    </LinearLayout>
+            </LinearLayout>
 
-</androidx.cardview.widget.CardView>
-            <!-- Category Buttons -->
+        </androidx.cardview.widget.CardView>
+        <!-- Category Buttons -->
 
 
     </HorizontalScrollView>
@@ -84,7 +91,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="370dp"
         app:cardCornerRadius="30dp"
-        android:layout_height="wrap_content">
+        android:layout_height="600dp">
 
         <LinearLayout
             android:padding="16dp"
@@ -113,15 +120,6 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Main Events RecyclerView -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewMainEvents"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="16dp"
-        android:background="#80A2B7FF"
-        android:padding="16dp"
-        android:layout_marginBottom="16dp"/>
-
 </LinearLayout>
+
+</ScrollView>

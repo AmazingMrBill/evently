@@ -3,6 +3,7 @@ package com.example.evently.Home;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,7 +33,17 @@ public class Main_pageList extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         initRecyclerView();
 
+        eventsRecyclerViewAdapter.setOnItemClickListener(new EventsRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                // Handle item click, e.g., navigate to the view_event fragment
+                Navigation.findNavController(requireView()).navigate(R.id.action_main_pageList_to_view_event);
+            }
+        });
+
         return view;
+
+
     }
 
     void initRecyclerView() {

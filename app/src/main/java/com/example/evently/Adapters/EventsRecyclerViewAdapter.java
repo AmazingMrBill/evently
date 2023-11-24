@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class EventsRecyclerViewAdapter extends RecyclerView.Adapter<EventsRecyclerViewAdapter.ViewHolder>{
     ArrayList<EventModel> eventModelArrayList= new ArrayList<>();
+
    public EventsRecyclerViewAdapter(ArrayList<EventModel> eventModelArrayList){
        this.eventModelArrayList=eventModelArrayList;
    }
@@ -27,6 +28,16 @@ public class EventsRecyclerViewAdapter extends RecyclerView.Adapter<EventsRecycl
         return new ViewHolder(cardView);
     }
 
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
+    }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -56,6 +67,15 @@ public class EventsRecyclerViewAdapter extends RecyclerView.Adapter<EventsRecycl
             place=itemView.findViewById(R.id.location);
             count=itemView.findViewById(R.id.count);
             imageView=itemView.findViewById(R.id.card_image);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onItemClick(getAdapterPosition());
+                    }
+                }
+            });
         }
     }
 }

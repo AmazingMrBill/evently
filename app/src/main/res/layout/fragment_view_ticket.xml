@@ -49,8 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:ticketTitle="Early Bird"
-                    app:ticketPrice="$20.00">
-                </include>
+                    app:ticketPrice="$20.00" />
 
                 <!-- Second Release Ticket -->
                 <include
@@ -59,17 +58,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:ticketTitle="Second Release"
-                    app:ticketPrice="$25.00">
-                </include>
+                    app:ticketPrice="$25.00" />
 
                 <!-- Late Comers Ticket -->
-                <include layout="@layout/ticket_option_item"
+                <include
+                    layout="@layout/ticket_option_item"
                     android:id="@+id/lateComersTicket"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:ticketTitle="Late Comers"
-                    app:ticketPrice="$30.00">
-                </include>
+                    app:ticketPrice="$30.00" />
+
+
+
 
                 <!-- VIP Tickets -->
                 <TextView
@@ -84,13 +85,13 @@
                 </TextView>
 
                 <!-- VIP Ticket -->
-                <include layout="@layout/ticket_option_item"
+                <include
+                    layout="@layout/ticket_option_item"
                     android:id="@+id/vipTicket"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:ticketTitle="VIP Ticket"
-                    app:ticketPrice="$50.00">
-                </include>
+                    app:ticketPrice="$50.00" />
 
             </LinearLayout>
 
@@ -112,6 +113,7 @@
 
             <!-- Cancel Button -->
             <ImageView
+                android:id="@+id/backToEvent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/round_cancle_btn"
@@ -126,6 +128,7 @@
 
             <!-- Purchase Button -->
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnpurchase"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="0dp"
