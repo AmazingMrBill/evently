@@ -20,4 +20,5 @@
     <color name="editTextBackGround">#f7f7f8</color>
 <color name="registerBtn">#363994</color>
     <color name="editTextSubHeading">#1d1a2f</color>
+    <color name="navigationColor">#b7c1e4</color>
 </resources>
