@@ -21,18 +21,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="30dp"
                 app:cardCornerRadius="30dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#80A2B7FF"
                     android:orientation="horizontal">
@@ -87,7 +88,6 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="30dp">
 
@@ -155,7 +155,6 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="30dp">
 
@@ -232,7 +231,6 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="30dp">
 
@@ -326,10 +324,10 @@
                 android:id="@+id/signOutButton"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="#5B6A9C"
                 android:text="Sign Out"
+                android:layout_marginEnd="80dp"
                 app:cornerRadius="15dp" />
 
         </LinearLayout>

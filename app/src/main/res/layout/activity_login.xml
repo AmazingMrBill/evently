@@ -1,137 +1,148 @@
-<androidx.core.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent"
         android:background="@color/white"
         android:padding="20dp"
 
         >
+
         <TextView
+            android:id="@+id/signUpTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:text="Sign In"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="30dp"
-            android:id="@+id/signUpTxt"
-            >
+            app:layout_constraintTop_toTopOf="parent">
 
         </TextView>
 
 
         <LinearLayout
+            android:id="@+id/emailBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_weight="5"
             android:orientation="vertical"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/signUpTxt"
-            android:id="@+id/emailBox">
+            app:layout_constraintTop_toBottomOf="@id/signUpTxt">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email"
                 android:textColor="@color/editTextSubHeading"
-                android:textSize="16sp"
-                >
+                android:textSize="16sp">
 
             </TextView>
+
             <EditText
+                android:id="@+id/emailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
-                android:hint="mai21@gmail.com"
-                android:textColorHint="@color/greyDate"
-                android:maxLines="1"
                 android:background="@color/editTextBackGround"
+                android:hint="mai21@gmail.com"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
                 android:paddingLeft="20dp"
                 android:textColor="@android:color/black"
-                android:inputType="textEmailAddress"
-                >
+                android:textColorHint="@color/greyDate">
 
             </EditText>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/passwordBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_weight="5"
             android:orientation="vertical"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/emailBox"
-            android:id="@+id/passwordBox"
-            >
+            app:layout_constraintTop_toBottomOf="@id/emailBox">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Password"
                 android:textColor="@color/editTextSubHeading"
-                android:textSize="16sp"
-                >
+                android:textSize="16sp">
 
             </TextView>
+
             <EditText
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
-                android:hint="********"
-                android:textColorHint="@color/greyDate"
-                android:maxLines="1"
                 android:background="@color/editTextBackGround"
+                android:hint="********"
+                android:inputType="textPassword"
+                android:maxLines="1"
                 android:paddingLeft="20dp"
                 android:textColor="@android:color/black"
-                android:inputType="textPassword"
-                >
+                android:textColorHint="@color/greyDate">
 
             </EditText>
         </LinearLayout>
 
+        <ProgressBar
+            android:layout_marginTop="30dp"
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordBox">
+
+        </ProgressBar>
+
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/signInBtn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            app:layout_constraintTop_toBottomOf="@id/passwordBox"
             android:layout_marginTop="30dp"
-            android:text="Sign In"
             android:backgroundTint="@color/registerBtn"
-            android:id="@+id/signInBtn"
-            >
+            android:text="Sign In"
+            app:layout_constraintTop_toBottomOf="@id/progressBar">
 
         </com.google.android.material.button.MaterialButton>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             android:padding="10dp"
-            app:layout_constraintTop_toBottomOf="@id/signInBtn"
-            >
+            app:layout_constraintTop_toBottomOf="@id/signInBtn">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Don't have an account?"
-                android:textColor="@android:color/darker_gray"
-                >
+                android:textColor="@android:color/darker_gray">
 
             </TextView>
+
             <TextView
                 android:id="@+id/signUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign Up"
                 android:layout_marginLeft="10dp"
-                android:textStyle="bold"
+                android:text="Sign Up"
                 android:textColor="@color/textHeading"
-                >
+                android:textStyle="bold">
 
             </TextView>
 

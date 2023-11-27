@@ -1,5 +1,6 @@
 package com.example.evently;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,9 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class user_profile_page extends Fragment {
 
+    FirebaseAuth auth;
+    Button button;
+    FirebaseUser user;
+    TextView textView;
 
     public user_profile_page() {
         // Required empty public constructor
@@ -25,11 +34,32 @@ public class user_profile_page extends Fragment {
 
         Button btnManage_Create_event = view.findViewById(R.id.manageEventButton);
 
+        auth = FirebaseAuth.getInstance();
+        button = view.findViewById(R.id.signOutButton);
+        user = auth.getCurrentUser();
+        textView = view.findViewById(R.id.emailAddress);
+
+        if (user == null){
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+        }
+        else {
+            textView.setText(user.getEmail());
+        }
 
         btnManage_Create_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(view).navigate(R.id.manage_create_event_page);
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
             }
         });
         return view;
