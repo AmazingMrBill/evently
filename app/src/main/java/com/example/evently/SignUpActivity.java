@@ -1,5 +1,7 @@
 package com.example.evently;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,16 +16,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText editTextEmail, editTextPassword;
+    EditText editTextFirstName, editTextLastName, editTextEmail, editTextPassword, editTextPhone;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
 
@@ -31,7 +40,7 @@ public class SignUpActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
             Intent intent = new Intent(SignUpActivity.this, Bottom_nav.class);
             startActivity(intent);
         }
@@ -46,14 +55,18 @@ public class SignUpActivity extends AppCompatActivity {
         MaterialButton registerButton = findViewById(R.id.registerBtn);
 
         mAuth = FirebaseAuth.getInstance();
+        editTextFirstName = findViewById(R.id.editTextFirstName);
+        editTextLastName = findViewById(R.id.editTextLastName);
         editTextEmail = findViewById(R.id.emailAddress);
         editTextPassword = findViewById(R.id.password);
+        editTextPhone = findViewById(R.id.phoneNo);
         progressBar = findViewById(R.id.progressBar);
+
+
 
         signInTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Start the LoginActivity (Sign In screen)
                 Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
@@ -62,18 +75,19 @@ public class SignUpActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressBar.setVisibility(view.VISIBLE);
+                progressBar.setVisibility(View.VISIBLE);
 
-                String email, password;
+                String firstName, lastName, email, password, phone;
+                firstName = String.valueOf(editTextFirstName.getText());
+                lastName = String.valueOf(editTextLastName.getText());
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
+                phone = String.valueOf(editTextPhone.getText());
 
-                if (TextUtils.isEmpty(email)){
-                    Toast.makeText(SignUpActivity.this, "Enter your email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (TextUtils.isEmpty(password)){
-                    Toast.makeText(SignUpActivity.this, "Enter your password", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.isEmpty(email) ||
+                        TextUtils.isEmpty(password) || TextUtils.isEmpty(phone)) {
+                    Toast.makeText(SignUpActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
 
@@ -83,21 +97,57 @@ public class SignUpActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(SignUpActivity.this, "Account created.",
+                                    // Store additional user details in Firebase
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    saveUserDataToFirestore(email, firstName, lastName, phone);
+                                    if (user != null) {
+                                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                                .setDisplayName(firstName + " " + lastName)
+                                                .build();
+
+                                        user.updateProfile(profileUpdates);
+                                    }
+
+                                    Toast.makeText(SignUpActivity.this, "Account created. Welcome, " + firstName + "!",
                                             Toast.LENGTH_SHORT).show();
+
+                                    Intent intent = new Intent(SignUpActivity.this, Bottom_nav.class);
+                                    startActivity(intent);
+                                    finish();
                                 } else {
-                                    // If sign in fails, display a message to the user.
                                     Toast.makeText(SignUpActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
-
-
-                Intent intent = new Intent(SignUpActivity.this, Bottom_nav.class);
-                 startActivity(intent);
-                 finish();
             }
         });
+    }
+
+    private void saveUserDataToFirestore(String email, String firstName, String lastName, String phone) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String userId = mAuth.getCurrentUser().getUid();
+
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("email", email);
+        userData.put("firstName", firstName);
+        userData.put("lastName", lastName);
+        userData.put("phone", phone);
+
+        db.collection("users")
+                .document(userId)
+                .set(userData)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d(TAG, "User data added to Firestore successfully");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding user data to Firestore", e);
+                    }
+                });
     }
 }

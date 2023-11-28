@@ -39,12 +39,19 @@ public class user_profile_page extends Fragment {
         user = auth.getCurrentUser();
         textView = view.findViewById(R.id.emailAddress);
 
-        if (user == null){
+        if (user == null) {
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
-        }
-        else {
+        } else {
+            // Displaying user's email
             textView.setText(user.getEmail());
+
+            // Fetch and display user's name
+            String userName = user.getDisplayName();
+            if (userName != null && !userName.isEmpty()) {
+                TextView usernameTextView = view.findViewById(R.id.username);
+                usernameTextView.setText(userName);
+            }
         }
 
         btnManage_Create_event.setOnClickListener(new View.OnClickListener() {

@@ -53,6 +53,7 @@
                 </TextView>
 
                 <EditText
+                    android:id="@+id/editTextFirstName"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_margin="5dp"
@@ -84,6 +85,7 @@
                 </TextView>
 
                 <EditText
+                    android:id="@+id/editTextLastName"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_margin="5dp"
@@ -188,6 +190,7 @@
             </TextView>
 
             <EditText
+                android:id="@+id/phoneNo"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
