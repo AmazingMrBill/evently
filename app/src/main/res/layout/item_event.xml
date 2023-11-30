@@ -18,7 +18,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="0dp"
             android:background="@color/hintCcolor"
-            android:padding="16dp"
+            android:padding="5dp"
             tools:ignore="MissingConstraints">
 
 
@@ -43,7 +43,7 @@
                 android:id="@+id/event_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="15dp"
                 android:layout_toEndOf="@id/image3"
                 android:text="Thur,"
@@ -74,8 +74,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/eventDate"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 android:textStyle="bold"
+                android:textColor="@color/deepBlue"
                 android:layout_marginTop="9dp"
                 android:layout_toEndOf="@id/image3"
                 android:text="Wednesday Codding Nights"
@@ -86,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/eventName"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/image3"
                 android:drawableLeft="@drawable/map2"
