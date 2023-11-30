@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/lightBlue"
-    android:padding="16dp">
+    android:background="@color/lightBlue">
 
 <LinearLayout
+    android:padding="16dp"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
