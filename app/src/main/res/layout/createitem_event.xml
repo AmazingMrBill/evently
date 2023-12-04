@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:background="@color/hintCcolor"
+            android:padding="5dp"
+            tools:ignore="MissingConstraints">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/image3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:elevation="2dp"
+                app:cardCornerRadius="15dp">
+
+                <ImageView
+                    android:id="@+id/eventImageM"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/partyj" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/event_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@id/image3"
+                android:text="Thur,"
+                android:textSize="15sp" />
+            ,
+
+            <TextView
+                android:id="@+id/eventDateM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@id/event_day"
+                android:text="Dec 22"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/eventTimeM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@id/eventDateM"
+                android:text="· 6:00 PM"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/eventNameM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/eventDateM"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/deepBlue"
+                android:layout_marginTop="9dp"
+                android:layout_toEndOf="@id/image3"
+                android:text="Wednesday Codding Nights"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/event_locationM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/eventNameM"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/image3"
+                android:drawableLeft="@drawable/map2"
+                android:drawablePadding="5dp"
+                android:drawableTint="#5865AC"
+                android:text="Umma University"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/eventDescriptionM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image3"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="7dp"
+                android:text="Event Description"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/eventPriceM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/eventNameM"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/event_locationM"
+                android:text="Event Price"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/hintCcolor"
+    android:background="@color/lightBlue"
     android:padding="16dp">
 
     <!-- Check if there are favorites -->

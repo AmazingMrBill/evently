@@ -24,6 +24,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -104,6 +106,11 @@ public class Create_Event extends Fragment {
         String userId = user.getUid();
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        // Reference to the Realtime Database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference eventsRef = database.getReference("events");
+
+        String eventId = eventsRef.push().getKey();
 
         Map<String, Object> eventData = new HashMap<>();
         eventData.put("eventName", eventName);
@@ -114,40 +121,35 @@ public class Create_Event extends Fragment {
         eventData.put("eventPrice", eventPrice);
         eventData.put("userId", userId); // Link event to the user who created it
 
-        db.collection("events")
-                .add(eventData)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        // Show a Toast message
-                        Toast.makeText(getActivity(), "Event created", Toast.LENGTH_SHORT).show();
+        // Add the event data to the Realtime Database
+        eventsRef.child(eventId)
+                .setValue(eventData)
+                .addOnSuccessListener(aVoid -> {
+                    // Show a Toast message
+                    Toast.makeText(getActivity(), "Event created", Toast.LENGTH_SHORT).show();
 
-                        // Upload image to Firebase Storage
-                        uploadImageToStorage(imageUri, new OnImageUploadListener() {
-                            @Override
-                            public void onImageUploadSuccess(String imageUrl) {
-                                // Image uploaded successfully, now save event data to Firestore with the image URL
-                                eventData.put("imageUrl", imageUrl);
-                                updateEventDataInFirestore(documentReference.getId(), eventData);
+                    // Upload image to Firebase Storage
+                    uploadImageToStorage(imageUri, new OnImageUploadListener() {
+                        @Override
+                        public void onImageUploadSuccess(String imageUrl) {
+                            // Image uploaded successfully, now save event data to Realtime Database with the image URL
+                            eventData.put("imageUrl", imageUrl);
+                            updateEventDataInRealtimeDatabase(eventId, eventData);
 
-                                // Navigate back to manage_create_event_page
-                                NavHostFragment.findNavController(Create_Event.this)
-                                        .navigate(R.id.action_create_Event_to_manage_create_event_page);
-                            }
+                            // Navigate back to manage_create_event_page
+                            NavHostFragment.findNavController(Create_Event.this)
+                                    .navigate(R.id.action_create_Event_to_manage_create_event_page);
+                        }
 
-                            @Override
-                            public void onImageUploadFailure(Exception e) {
-                                // Handle image upload failure
-                                Log.w(TAG, "Error uploading image to Firebase Storage", e);
-                            }
-                        });
-                    }
+                        @Override
+                        public void onImageUploadFailure(Exception e) {
+                            // Handle image upload failure
+                            Log.w(TAG, "Error uploading image to Firebase Storage", e);
+                        }
+                    });
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding event to Firestore", e);
-                    }
+                .addOnFailureListener(e -> {
+                    Log.w(TAG, "Error adding event to Realtime Database", e);
                 });
     }
 
@@ -162,28 +164,24 @@ public class Create_Event extends Fragment {
                 })
                 .addOnFailureListener(e -> listener.onImageUploadFailure(e));
     }
+    private void updateEventDataInRealtimeDatabase(String eventId, Map<String, Object> eventData) {
+        // Reference to the Realtime Database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference eventsRef = database.getReference("events");
 
-    private void updateEventDataInFirestore(String eventId, Map<String, Object> eventData) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        db.collection("events")
-                .document(eventId)
-                .set(eventData)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Navigate back to manage_create_event_page
-                        NavHostFragment.findNavController(Create_Event.this)
-                                .navigate(R.id.action_create_Event_to_manage_create_event_page);
-                    }
+        // Update the event data in the Realtime Database
+        eventsRef.child(eventId)
+                .updateChildren(eventData)
+                .addOnSuccessListener(aVoid -> {
+                    // Navigate back to manage_create_event_page
+                    NavHostFragment.findNavController(Create_Event.this)
+                            .navigate(R.id.action_create_Event_to_manage_create_event_page);
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error updating event data in Firestore", e);
-                    }
+                .addOnFailureListener(e -> {
+                    Log.w(TAG, "Error updating event data in Realtime Database", e);
                 });
     }
+
 
     // Interface to listen for image upload events
     private interface OnImageUploadListener {
