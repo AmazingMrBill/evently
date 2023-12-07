@@ -9,7 +9,7 @@
 
     <!-- Event Images -->
     <androidx.cardview.widget.CardView
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_width="370dp"
         app:cardCornerRadius="30dp"
         android:layout_height="wrap_content">
@@ -44,12 +44,15 @@
 
     </androidx.cardview.widget.CardView>
 
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="400dp">
 
     <androidx.cardview.widget.CardView
         android:layout_marginTop="16dp"
         android:layout_width="370dp"
         app:cardCornerRadius="30dp"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:padding="16dp"
@@ -88,6 +91,12 @@
                 android:layout_height="wrap_content"
                 android:hint="Event Location" />
 
+            <EditText
+                android:id="@+id/editTextEventDay"
+                android:hint="Event Day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
             <!-- Event Description -->
             <EditText
                 android:id="@+id/editTextEventDescription"
@@ -104,13 +113,24 @@
                 android:layout_height="wrap_content"
                 android:hint="Event Price"
                 android:inputType="numberDecimal" />
+            <!-- Event Month -->
+            <EditText
+                android:id="@+id/editTextEventMonth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Month" />
+
+            <!-- Event Count -->
+            <EditText
+                android:id="@+id/editTextEventCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Count"
+                android:inputType="number" />
 
         </LinearLayout>
-
-
-
     </androidx.cardview.widget.CardView>
-
+</androidx.core.widget.NestedScrollView>
 
 
     <!-- Save Button -->

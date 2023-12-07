@@ -14,17 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.evently.Models.SearchModel;
 import com.example.evently.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> implements Filterable {
+public class SearchAdapter extends FirebaseRecyclerAdapter<SearchModel, SearchAdapter.ViewHolder> implements Filterable {
     private List<SearchModel> searchModelList;
     private List<SearchModel> searchModelListFull;
 
-    public SearchAdapter(List<SearchModel> searchModelList) {
-        this.searchModelList = searchModelList;
-        this.searchModelListFull = new ArrayList<>(searchModelList);
+    public SearchAdapter(@NonNull FirebaseRecyclerOptions<SearchModel> options) {
+        super(options);
+        this.searchModelList = new ArrayList<>();
+        this.searchModelListFull = new ArrayList<>();
     }
 
     @NonNull
@@ -35,14 +38,18 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        SearchModel searchModel = searchModelList.get(position);
-        holder.day.setText(searchModel.getDay());
-        holder.date.setText(searchModel.getDate());
-        holder.time.setText(searchModel.getTime());
-        holder.name.setText(searchModel.getName());
-        holder.location.setText(searchModel.getLocation());
-        Glide.with(holder.imageView).load(searchModel.getImage()).into(holder.imageView);
+    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull SearchModel model) {
+        holder.day.setText(model.getEventDay());
+        holder.date.setText(model.getEventDate());
+        holder.time.setText(model.getEventTime());
+        holder.name.setText(model.getEventName());
+        holder.location.setText(model.getEventLocation());
+
+        Glide.with(holder.imageView.getContext())
+                .load(model.getImageUrl())
+                .placeholder(com.firebase.ui.database.R.drawable.common_google_signin_btn_icon_dark)
+                .error(com.firebase.ui.database.R.drawable.common_google_signin_btn_icon_dark_normal)
+                .into(holder.imageView);
     }
 
     @Override
@@ -66,8 +73,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for (SearchModel item : searchModelListFull) {
-                    if (item.getName().toLowerCase().contains(filterPattern) ||
-                            item.getLocation().toLowerCase().contains(filterPattern)) {
+                    if (item.getEventName().toLowerCase().contains(filterPattern) ||
+                            item.getEventLocation().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }
@@ -86,7 +93,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         }
     };
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         TextView day, date, time, name, location;
         ImageView imageView;
 

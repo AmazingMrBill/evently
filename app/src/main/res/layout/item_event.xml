@@ -48,15 +48,26 @@
                 android:layout_toEndOf="@id/image3"
                 android:text="Thur,"
                 android:textSize="15sp" />
-,
+
             <TextView
-                android:id="@+id/eventDate"
+                android:id="@+id/eventMonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="15dp"
                 android:layout_toEndOf="@id/event_day"
-                android:text="Dec 22"
+                android:text="Dec"
+                android:textSize="15sp" />
+
+            ,
+            <TextView
+                android:id="@+id/eventDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@id/eventMonth"
+                android:text="22"
                 android:textSize="15sp" />
 
             <TextView

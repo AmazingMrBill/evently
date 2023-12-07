@@ -13,7 +13,7 @@ public class MainModel {
         this.eventLocation = eventLocation;
         this.eventTime = eventTime;
         this.eventDate = eventDate;
-        EventPrice = eventPrice;
+        this.EventPrice = eventPrice;
         this.imageUrl = imageUrl;
     }
 

@@ -71,12 +71,15 @@ public class Create_Event extends Fragment {
                     String eventTime = ((EditText) view.findViewById(R.id.editTextEventTime)).getText().toString();
                     String eventLocation = ((EditText) view.findViewById(R.id.editTextEventLocation)).getText().toString();
                     String eventDescription = ((EditText) view.findViewById(R.id.editTextEventDescription)).getText().toString();
+                    String eventMonth = ((EditText) view.findViewById(R.id.editTextEventMonth)).getText().toString();
+                    String eventCount = ((EditText) view.findViewById(R.id.editTextEventCount)).getText().toString();
+                    String eventDay = ((EditText) view.findViewById(R.id.editTextEventDay)).getText().toString();
                     double eventPrice = Double.parseDouble(((EditText) view.findViewById(R.id.editTextEventPrice)).getText().toString());
 
                     // Validate other fields as needed
 
                     // Save event data to Firestore and Storage
-                    saveEventDataToFirestore(eventName, eventDate, eventTime, eventLocation, eventDescription, eventPrice, selectedImageUri);
+                    saveEventDataToFirestore(eventName, eventDate, eventTime,eventCount, eventLocation, eventDescription, eventMonth, eventPrice, eventDay,selectedImageUri);
                 } else {
                     // Inform the user that an image must be selected
                     Toast.makeText(getActivity(), "Please choose an image first", Toast.LENGTH_SHORT).show();
@@ -100,7 +103,7 @@ public class Create_Event extends Fragment {
         }
     }
 
-    private void saveEventDataToFirestore(String eventName, String eventDate, String eventTime, String eventLocation, String eventDescription, double eventPrice, Uri imageUri) {
+    private void saveEventDataToFirestore(String eventName,String eventDate,String eventCount, String eventTime, String eventLocation, String eventDescription,String eventDay, double eventPrice,String eventMonth, Uri imageUri) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         String userId = user.getUid();
@@ -115,10 +118,13 @@ public class Create_Event extends Fragment {
         Map<String, Object> eventData = new HashMap<>();
         eventData.put("eventName", eventName);
         eventData.put("eventDate", eventDate);
+        eventData.put("eventMonth", eventMonth);
+        eventData.put("eventCount", eventCount);
         eventData.put("eventTime", eventTime);
         eventData.put("eventLocation", eventLocation);
         eventData.put("eventDescription", eventDescription);
-        eventData.put("eventPrice", eventPrice);
+        eventData.put("eventDay", eventDay);
+        eventData.put("eventPrice", String.valueOf(eventPrice));
         eventData.put("userId", userId); // Link event to the user who created it
 
         // Add the event data to the Realtime Database

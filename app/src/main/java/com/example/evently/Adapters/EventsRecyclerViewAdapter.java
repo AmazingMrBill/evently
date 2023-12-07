@@ -41,12 +41,13 @@ public class EventsRecyclerViewAdapter extends RecyclerView.Adapter<EventsRecycl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.date.setText(eventModelArrayList.get(position).getDay());
-        holder.month.setText(eventModelArrayList.get(position).getMonth());
-        holder.title.setText(eventModelArrayList.get(position).getTitle());
-        holder.place.setText(eventModelArrayList.get(position).getPlace());
-        holder.count.setText(eventModelArrayList.get(position).getCount());
-        Glide.with(holder.imageView).load(eventModelArrayList.get(position).getImage()).into(holder.imageView);
+        holder.date.setText(eventModelArrayList.get(position).getEventDate());
+        holder.month.setText(eventModelArrayList.get(position).getEventMonth());
+        holder.title.setText(eventModelArrayList.get(position).getEventName());
+        holder.place.setText(eventModelArrayList.get(position).getEventLocation());
+        holder.count.setText(eventModelArrayList.get(position).getEventCount());
+
+        Glide.with(holder.imageView).load(eventModelArrayList.get(position).getImageUrl()).into(holder.imageView);
 
     }
 
