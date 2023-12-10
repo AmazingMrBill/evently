@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tickets_nav"
-    app:startDestination="@id/upcoming_events">
+    app:startDestination="@id/no_tickets">
 
     <fragment
         android:id="@+id/upcoming_events"
@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_upcoming_events_to_past_events2"
             app:destination="@id/past_events" />
+        <action
+            android:id="@+id/action_upcoming_events_to_no_tickets"
+            app:destination="@id/no_tickets" />
     </fragment>
     <fragment
         android:id="@+id/past_events"
@@ -30,5 +33,9 @@
         android:id="@+id/no_tickets"
         android:name="com.example.evently.no_tickets"
         android:label="fragment_no_tickets"
-        tools:layout="@layout/fragment_no_tickets" />
+        tools:layout="@layout/fragment_no_tickets" >
+        <action
+            android:id="@+id/action_no_tickets_to_upcoming_events"
+            app:destination="@id/upcoming_events" />
+    </fragment>
 </navigation>

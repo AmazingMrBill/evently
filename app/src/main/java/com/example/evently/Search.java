@@ -14,10 +14,7 @@ import androidx.appcompat.widget.SearchView;
 
 import com.example.evently.Adapters.EventsRecyclerViewAdapter;
 import com.example.evently.Adapters.SearchAdapter;
-import com.example.evently.Models.SearchModel;
 import com.example.evently.Repository.EventsRepo;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class Search extends Fragment {
     RecyclerView recyclerView;
@@ -49,7 +46,7 @@ public class Search extends Fragment {
 
     void initRecyclerView() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
-        searchAdapter = new SearchAdapter(getSearchAdapterOptions()); // Use SearchAdapter
+        searchAdapter = new SearchAdapter(EventsRepo.getEventsRepo().getSearchModelList()); // Use SearchAdapter
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(searchAdapter); // Use SearchAdapter
     }
@@ -70,14 +67,4 @@ public class Search extends Fragment {
                 return true;
             }
         });
-    }
-
-    private FirebaseRecyclerOptions<SearchModel> getSearchAdapterOptions() {
-        // Set up FirebaseRecyclerOptions for SearchAdapter
-        FirebaseRecyclerOptions<SearchModel> options =
-                new FirebaseRecyclerOptions.Builder<SearchModel>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("events"), SearchModel.class)
-                        .build();
-        return options;
-    }
-}
+    }}

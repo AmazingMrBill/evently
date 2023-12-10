@@ -1,87 +1,43 @@
 package com.example.evently.Models;
 
 public class SearchModel {
-    String eventDay;
-    String eventTime;
-    String eventName;
-    String eventDate;
-    String eventLocation;
+    private String day;
+    private String time;
+    private String title;
+    private String date;
+    private String location;
 
-    String eventMonth;
-
-
-    String imageUrl;
-
-    public SearchModel() {
-        // Default constructor required for Firebase
-    }
-
-    public SearchModel(String day, String time, String title, String date, String location, String eventMonth, String imageUrl)
+    private String name;
+    private int image;
+    public SearchModel(String day, String time, String title,String date,String location, String name, int image)
     {
-        this.eventDay =day;
-        this.eventTime =time;
-        this.eventName =title;
-        this.eventDate =date;
-        this.eventLocation =location;
-        this.eventMonth = eventMonth;
-        this.imageUrl = imageUrl;
+        this.day=day;
+        this.time=time;
+        this.title=title;
+        this.date=date;
+        this.location=location;
+        this.image=image;
+        this.name =name;
 
     }
 
-
-    public String getEventDay() {
-        return eventDay;
+    public String getDay()
+    {
+        return day;
     }
-
-    public void setEventDay(String eventDay) {
-        this.eventDay = eventDay;
+    public String getTime()
+    {
+        return time;
     }
-    public String getEventDate() {
-        return eventDate;
+    public String getDate()
+    {
+        return date;
     }
-
-    public void setEventDate(String eventDate) {
-        this.eventDate = eventDate;
+    public String getLocation()
+    {
+        return location;
     }
+    public int getImage() { return image;}
 
-    public String getEventMonth() {
-        return eventMonth;
-    }
-
-    public void setEventMonth(String eventMonth) {
-        this.eventMonth = eventMonth;
-    }
-
-    public String getEventName() {
-        return eventName;
-    }
-
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
-    }
-    public String getEventTime() {
-        return eventTime;
-    }
-
-    public void setEventTime(String eventTime) {
-        this.eventTime = eventTime;
-    }
-
-    public String getEventLocation() {
-        return eventLocation;
-    }
-
-    public void setEventLocation(String eventLocation) {
-        this.eventLocation = eventLocation;
-    }
-
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
+    public String getName() { return name;}
 }

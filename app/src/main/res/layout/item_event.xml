@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="0dp"
-            android:background="@color/hintCcolor"
+            android:background="@color/lightBlue"
             android:padding="5dp"
             tools:ignore="MissingConstraints">
 

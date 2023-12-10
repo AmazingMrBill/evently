@@ -18,9 +18,16 @@ public class EventsRepo {
 
 
         // Initialize SearchModel list (you can populate this with relevant data)
-   searchModelList.add(new SearchModel("A","S","S","S","A","A","2"));
-
-
+        searchModelList.add(new SearchModel("Mon,", " 2:00 PM", "","22 Dec • ", "Umma University", "Codding Night", R.drawable.party));
+        searchModelList.add(new SearchModel("Mon,", " 2:00 PM", "","22 Dec •", "Codding Night", "Umma University", R.drawable.fireworks));
+        searchModelList.add(new SearchModel("Tue,", " 3:30 PM","", "23 Dec •", "Tech Meetup", "Tech Hub", R.drawable.party));
+        searchModelList.add(new SearchModel("Wed,", " 5:00 PM","", "24 Dec •", "Business Networking", "Downtown Business Center", R.drawable.party));
+        searchModelList.add(new SearchModel("Thu,", " 6:30 PM", "","25 Dec •", "Food Festival", "City Park", R.drawable.party));
+        searchModelList.add(new SearchModel("Mon,", " 2:00 PM", "","22 Dec • ", "Umma University", "Codding Night", R.drawable.party));
+        searchModelList.add(new SearchModel("Mon,", " 2:00 PM", "","22 Dec •", "Codding Night", "Umma University", R.drawable.visa));
+        searchModelList.add(new SearchModel("Tue,", " 3:30 PM","", "23 Dec •", "Tech Meetup", "Tech Hub", R.drawable.party));
+        searchModelList.add(new SearchModel("Wed,", " 5:00 PM","", "24 Dec •", "Business Networking", "Downtown Business Center", R.drawable.party));
+        searchModelList.add(new SearchModel("Thu,", " 6:30 PM", "","25 Dec •", "Food Festival", "City Park", R.drawable.party));
 
     }
 

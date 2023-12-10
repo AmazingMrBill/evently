@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@color/lightBlue"
     tools:context=".no_tickets">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="100dp"
+        android:layout_height="206dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/event" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/deepBlue"
+        android:layout_marginStart="150dp"
+        android:text="No Tickets">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/deepBlue"
+        android:layout_marginStart="40dp"
+        android:textAlignment="center"
+        android:text="make sure you're in the same account that purchased your tickets">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/tryAgain"
+        android:layout_marginStart="70dp"
+        android:layout_width="300dp"
+        android:text="Try Again"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+
+</LinearLayout>
