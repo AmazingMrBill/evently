@@ -58,6 +58,7 @@ public class Main_pageList extends Fragment {
         eventAdapter.setOnItemClickListener(new EventAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DataSnapshot documentSnapshot, int position) {
+
                 // Navigate to the new fragment when an item is clicked
                 Navigation.findNavController(requireView())
                         .navigate(R.id.action_main_pageList_to_view_event);

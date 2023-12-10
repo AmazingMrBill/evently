@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.evently.R;
 
@@ -32,6 +33,7 @@ public class purchase_ticket extends Fragment {
         btnProceedToPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(requireContext(), "Event Purchased!", Toast.LENGTH_SHORT).show();
                 Navigation.findNavController(view).navigate(R.id.main_pageList);
             }
 

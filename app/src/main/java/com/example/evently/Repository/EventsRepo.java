@@ -23,11 +23,11 @@ public class EventsRepo {
         searchModelList.add(new SearchModel("Tue,", " 3:30 PM","", "23 Dec •", "Tech Meetup", "Tech Hub", R.drawable.party));
         searchModelList.add(new SearchModel("Wed,", " 5:00 PM","", "24 Dec •", "Business Networking", "Downtown Business Center", R.drawable.party));
         searchModelList.add(new SearchModel("Thu,", " 6:30 PM", "","25 Dec •", "Food Festival", "City Park", R.drawable.party));
-        searchModelList.add(new SearchModel("Mon,", " 2:00 PM", "","22 Dec • ", "Umma University", "Codding Night", R.drawable.party));
-        searchModelList.add(new SearchModel("Mon,", " 2:00 PM", "","22 Dec •", "Codding Night", "Umma University", R.drawable.visa));
-        searchModelList.add(new SearchModel("Tue,", " 3:30 PM","", "23 Dec •", "Tech Meetup", "Tech Hub", R.drawable.party));
-        searchModelList.add(new SearchModel("Wed,", " 5:00 PM","", "24 Dec •", "Business Networking", "Downtown Business Center", R.drawable.party));
-        searchModelList.add(new SearchModel("Thu,", " 6:30 PM", "","25 Dec •", "Food Festival", "City Park", R.drawable.party));
+        searchModelList.add(new SearchModel("Mon,", " 2:00 PM", "","2 Oct • ", "Kitengela", "Drama Nigh", R.drawable.party));
+        searchModelList.add(new SearchModel("Mon,", " 2:00 PM", "","15 Nov •", "Codding Night", "Umma University", R.drawable.visa));
+        searchModelList.add(new SearchModel("Tue,", " 3:30 PM","", "6 Sep •", "Tech Meetup", "Tech Hub", R.drawable.party));
+        searchModelList.add(new SearchModel("Wed,", " 5:00 PM","", "12 Dec •", "Business Networking", "Downtown Business Center", R.drawable.party));
+        searchModelList.add(new SearchModel("Thu,", " 6:30 PM", "","2 Jan •", "Food Festival", "City Park", R.drawable.party));
 
     }
 
