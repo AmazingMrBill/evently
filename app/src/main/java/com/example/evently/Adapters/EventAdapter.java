@@ -14,21 +14,14 @@ import com.example.evently.Models.EventModel;
 import com.example.evently.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
 
 public class EventAdapter extends FirebaseRecyclerAdapter<EventModel, EventAdapter.EventViewHolder> {
 
-    private OnItemClickListener onItemClickListener;
+    private OnItemClickListener listener;
 
     public EventAdapter(@NonNull FirebaseRecyclerOptions<EventModel> options) {
         super(options);
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.onItemClickListener = listener;
     }
 
     @NonNull
@@ -36,6 +29,7 @@ public class EventAdapter extends FirebaseRecyclerAdapter<EventModel, EventAdapt
     public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_card, parent, false);
         return new EventViewHolder(view);
+
     }
 
     @Override
@@ -54,7 +48,7 @@ public class EventAdapter extends FirebaseRecyclerAdapter<EventModel, EventAdapt
                 .into(holder.imageUrl);
     }
 
-    static class EventViewHolder extends RecyclerView.ViewHolder {
+   class EventViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageUrl;
         TextView evenDate, eventMonth, eventName, eventLocation, eventCount;
@@ -68,6 +62,24 @@ public class EventAdapter extends FirebaseRecyclerAdapter<EventModel, EventAdapt
             eventName = itemView.findViewById(R.id.eventTitle);
             eventLocation = itemView.findViewById(R.id.location);
             eventCount = itemView.findViewById(R.id.count);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null){
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position);
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(DataSnapshot documentSnapshot, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
     }
 }

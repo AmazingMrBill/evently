@@ -18,6 +18,7 @@ import com.example.evently.Models.EventModel;
 import com.example.evently.R;
 import com.example.evently.Repository.EventsRepo;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Main_pageList extends Fragment {
@@ -38,13 +39,6 @@ public class Main_pageList extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         initRecyclerView();
 
-        eventAdapter.setOnItemClickListener(new EventAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                // Handle item click, e.g., navigate to the view_event fragment
-                Navigation.findNavController(requireView()).navigate(R.id.action_main_pageList_to_view_event);
-            }
-        });
 
         return view;
     }
@@ -60,6 +54,15 @@ public class Main_pageList extends Fragment {
         eventAdapter = new EventAdapter(options);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(eventAdapter);
+
+        eventAdapter.setOnItemClickListener(new EventAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DataSnapshot documentSnapshot, int position) {
+                // Navigate to the new fragment when an item is clicked
+                Navigation.findNavController(requireView())
+                        .navigate(R.id.action_main_pageList_to_view_event);
+            }
+        });
     }
 
     @Override
